@@ -29,14 +29,17 @@ import sg.edu.nus.iss.CurrencyConverterAPI.Models.Country;
 @Service
 public class CurrencyConverterImplementation implements CurrencyConverterInterface{
 
-    private String apiKey;
+    //private String apiKey;
     private String apiUrl = "https://free.currconv.com";
 
-    @PostConstruct
-    public void init(){
-        apiKey = System.getenv("OPEN_CURRENCY_MAP");
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>" + apiKey);
-    }
+    // @PostConstruct
+    // public void init(){
+    //     apiKey = System.getenv("OPEN_CURRENCY_MAP");
+    //     System.out.println(">>>>>>>>>>>>>>>>>>>>>>" + apiKey);
+    // }
+
+    @Value("${OPEN_CURRENCY_MAP}")
+    String apiKey;
 
     @Override
     public List<Country> getAllCountries() {
@@ -44,6 +47,8 @@ public class CurrencyConverterImplementation implements CurrencyConverterInterfa
         String url = createUrl();
 
         System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> URL :" + url);
+
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> APIKEY :" + apiKey);
 
         RequestEntity<Void> req = RequestEntity
         .get(url).build();
