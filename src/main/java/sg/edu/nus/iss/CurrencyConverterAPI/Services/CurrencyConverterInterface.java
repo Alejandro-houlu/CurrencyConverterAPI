@@ -23,6 +23,6 @@ public interface CurrencyConverterInterface {
 
     public Double convert(Double d1, Double d2);
 
-    public Country findCountryByCurrencyId(String currencyId);
+    public Country findCountryByCurrencyId(String currencyId); 
     
 }
