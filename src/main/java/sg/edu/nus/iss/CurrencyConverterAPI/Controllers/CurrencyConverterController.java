@@ -1,8 +1,11 @@
 package sg.edu.nus.iss.CurrencyConverterAPI.Controllers;
 
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Conditional;
@@ -28,8 +31,9 @@ public class CurrencyConverterController {
     public String getCountryList(Model model){
 
         List<Country> countryList = cService.getAllCountries();
+        countryList = countryList.stream().sorted((c1,c2)->c1.getCurrencyName().compareTo(c2.getCurrencyName())).toList();
 
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>County List: " + countryList.get(2));
+        //System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>County List: " + countryList.get(2));
 
         model.addAttribute("countryList", countryList);
 
