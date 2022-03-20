@@ -34,6 +34,7 @@
                             <span class="input-group-text col-12">FROM: </span>
                         </div>
                         <select class="form-select form-select-lg mb-3" name="from" id="from">
+                            <option value="" selected disabled hidden>Select currency</option>
                             <option th:each="country:${countryList}" th:value="${country.currencyId}" th:text="${country.name} + ' - ' + ${country.currencyName}" ></option>
                         </select>
                     </div>
@@ -43,6 +44,7 @@
                             <span class="input-group-text col-12">TO: </span>
                         </div>
                         <select class="form-select form-select-lg mb-3" name="to" id="to">
+                            <option value="" selected disabled hidden>Select currency</option>
                             <option th:each="country:${countryList}" th:value="${country.currencyId}" th:text="${country.name} + ' - ' + ${country.currencyName}" ></option>
                         </select>
                     </div>
